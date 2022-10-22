@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div>
+        <!-- 循环渲染复选框 -->
+        <template v-for="({name,flag},i) in fruits"
+          >{{name}}<input type="checkbox" v-model="fruits[i].flag" />
+        </template>
+      </div>
+      <div>
+        <input type="checkbox" v-model="all" /> 全选
+        <input type="button" value="反选" @click="invert" />
+      </div>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+      new Vue({
+        el: "#app",
+        data: {
+          fruits: [
+            { name: "山竹", flag: false },
+            { name: "苹果", flag: false },
+            { name: "桂圆", flag: false },
+            { name: "西瓜", flag: false },
+            { name: "辣椒", flag: false },
+          ],
+        },
+
+        computed: {
+          all: {
+            get() {
+              //每个都打勾 => true; 有一个不打钩 => false
+              return this.fruits.every(({ flag }) => flag === true);
+            },
+            // 设置全选框的状态  为什么再次点击全选没有改变值?
+            set(val) {
+              this.fruits = this.fruits.map((item) => {
+                return { ...item, flag: val };
+              });
+            },
+          },
+        },
+        methods: {
+          invert() {
+            this.fruits = this.fruits.map((item) => {
+              return { ...item, flag: !item.flag };
+            });
+          },
+        },
+      });
+      // 所有水果都打钩后,全选自动打钩.有一个不勾,全选就是不勾.
+      // 点击全选复选框, 全选框打钩,所有水果都打钩,不勾,所有水果都不勾
+
+      // 反选按钮逻辑你懂的.
+
+      // 提示:
+      // 全选复选框的勾选状态是5个水果复选框的计算属性.
+      // 而且自己本身也可以操作.因此需要设置set和get.
+      // 可以利用数组的every辅助判断.
+      // 你可以造出这样的数据用于v-for渲染水果列表:
+      // [{name:'山竹', flag:false}, {name:'香蕉', flag:false}......]
+      // 其中flag表示当前水果复选框的勾选状态.....
+    </script>
+  </body>
+</html>

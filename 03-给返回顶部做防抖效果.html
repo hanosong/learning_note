@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 6000px;
+        }
+
+        .up {
+            width: 50px;
+            height: 50px;
+            border: 1px solid blue;
+            text-align: center;
+            line-height: 50px;
+            border-radius: 50%;
+            position: fixed;
+            bottom: 50px;
+            right: 50px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 返回顶部 -->
+    <div class="up">↑</div>
+
+    <script>
+        //1.获取 dom
+        var oUp = document.querySelector('.up');
+
+        //2.给window 绑定 滚动事件
+        // window.onscroll = function () {
+        //     //3.获取滚动后离顶部的距离
+        //     var top = document.documentElement.scrollTop;
+        //     console.log(top);
+        //     //4.当滚动距离超过200px的时候，显示 小按钮
+        //     if (top >= 200) {
+        //         oUp.style.display = "block";
+        //     } else {
+        //         oUp.style.display = "none";
+        //     }
+        // }
+
+        //给滚动事件绑定 函数,使用了防抖 ,会减少执行很多次的 scroll
+        window.onscroll = debounce(goup, 200);
+        // window.onscroll = goup;
+
+        function goup() {
+            var top = document.documentElement.scrollTop;
+            console.log(top);
+            //4.当滚动距离超过200px的时候，显示 小按钮
+            if (top >= 200) {
+                oUp.style.display = "block";
+            } else {
+                oUp.style.display = "none";
+            }
+        }
+        //滚动条事件 会持续触发，需要使用 防抖来优化性能
+        //封装防抖函数
+        //参数1：回调函数  ；参数2 ：延时时间 是毫秒数 ，
+        function debounce(fn, delay) {
+            var timer = null;//设置了定时器的初始值
+            return function () {//使用了闭包
+                if (timer) {//判定定时器是否存在，如果存在将原来的定时器清除，生成新的定时器
+                    clearTimeout(timer);
+                    timer = setTimeout(fn, delay);
+                } else {
+                    timer = setTimeout(fn, delay);
+                }
+            }
+        }
+
+        //思考:200ms 内持续不断的触发这个事件，会导致函数没有办法执行到
+        //希望设计一个开关一样的东西，让某个函数执行一次后，在某段时间内是失效的，过了这段时间再开始激活， 节流
+    </script>
+</body>
+
+</html>

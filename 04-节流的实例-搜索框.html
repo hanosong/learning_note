@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" placeholder="请输入搜索内容" />
+    <script>
+        var oInput = document.querySelector('input');
+        //给input 绑定鼠标抬起时间
+        //onkeyup存在性能问题 ,需要使用 节流来优化
+        // oInput.onkeyup = function (ev) {
+        //     console.log(ev.target.value);
+        //     console.log("调用后台接口");
+        // }
+        oInput.onkeyup = throttle(getdata, 500);
+        // oInput.onkeyup = getdata;
+        function getdata() {
+            console.log("调用后台接口" + oInput.value);
+        }
+
+        //封装节流函数 throttle
+        //参数1：回调函数  参数2：延时时间
+        function throttle(fn, delay) {
+            var valid = true;//记录是否激活的状态 true  激活  false 休息
+            return function () {
+                if (!valid) {//休息
+                    return false;
+                }
+                valid = false;//设置的下一次的状态值
+                setTimeout(function () {
+                    fn();//调用函数
+                    valid = true;//激活状态
+                }, delay);
+            }
+        }
+        /*
+    1、防抖(debounce)：触发高频事件后 n 秒内函数只会执行一次，如果 n 秒内高频事件再次被触发，则重新计算时间
+     举例：就好像在百度搜索时，每次输入之后都有联想词弹出，这个控制联想词的方法就不可能是输入框内容一改变就触发的，他一定是当你结束输入一段时间之后才会触发。
+     节流(thorttle)：高频事件触发，但在 n 秒内只会执行一次，所以节流会稀释函数的执行频率
+     举例：预定一个函数只有在大于等于执行周期时才执行，周期内调用不执行。就好像你在淘宝抢购某一件限量热卖商品时，你不断点刷新点购买，可是总有一段时间你点上是没有效果，这里就用到了节流，就是怕点的太快导致系统出现bug。
+    区别：**防抖动是将多次执行变为最后一次执行，节流是将多次执行变成每隔一段时间执行。**
+    */
+
+    </script>
+</body>
+
+</html>

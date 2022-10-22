@@ -1,0 +1,44 @@
+* {
+    padding:0;
+    margin: 0;
+}
+ul,li{
+    list-style: none;
+}
+.flex {
+    display: flex;  
+}
+
+/* 搜索框样式 */
+#wrap {
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+#wrap > div {
+    margin-top: 20px;
+    flex-grow: 1;
+}
+.cover_wrap{
+    height: 400px;
+}
+.cover_wrap > img{
+    height: 100%;
+}
+/* 留言板块 */
+#message {
+    height: 1000px;
+    width: 30%;
+    overflow: auto;
+}
+.message_icon {
+    width: 100px;
+    height: 100px;
+}
+.message_icon > img {
+    width: 100%;
+    border-radius: 50%;
+}
+.message_icon_wrap{
+    display: flex;;
+    align-items: center;
+}

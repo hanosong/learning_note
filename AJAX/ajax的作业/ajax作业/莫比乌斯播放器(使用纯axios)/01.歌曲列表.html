@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="common.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='wrap' class="flex">
+    <div class="search_warp">
+      <input type="text">
+      <button>搜索</button>
+      <ul class="song_list">
+      </ul>
+    </div>
+    <div id="cover">
+    </div>
+    <div id="message"></div>
+  </div>
+  </div>
+  <script src="axios.js"></script>
+  <script>
+    //获取搜索和歌曲列表显示板块
+    const oSearchWrap = document.querySelector('.search_warp')
+    const oSearch = oSearchWrap.querySelector('input');
+    const oBtn = oSearchWrap.querySelector('button');
+    const oSongList = oSearchWrap.querySelector('.song_list')
+    //获取封面
+    const oCover = document.querySelector('#cover');
+    //获取评论板块
+    const oMessage = document.querySelector('#message');
+
+    //设置默认url
+    axios.defaults.baseURL = 'https://autumnfish.cn/';
+    
+    function getUrl (url, params){
+      return axios.get(url, {params});
+    }
+    getUrl('search', {
+      keywords: '起风了',
+    })
+    .then(res => {
+      //拿到音乐接口
+      const list = res.data.result.songs;
+      list.forEach(song => {
+        //渲染音乐列表
+        oSongList.innerHTML += `
+        <li>
+          ${song.name}
+          <button>播放</button>
+          ${song.mvid ? '':'<button> MV </button>'}
+        </li>
+        `
+      })
+      const first_song_id = list[0].id;
+      //请求第一首歌封面的同时请求评论
+      getUrl ('comment/hot?type=0',{id:first_song_id})
+      .then(res => {
+        const mus_comment = res.data.hotComments;
+        mus_comment.forEach(comment => {
+          oMessage.innerHTML += `
+          <div class = 'message_icon_wrap'>
+            <div class = 'message_icon'>
+              <img src=${comment.user.avatarUrl} />  
+            </div>
+            <div>
+              <h4>${comment.user.nickname}</h4>
+              <span>${comment.content}</span>
+            </div>
+          <div>
+          `
+        })
+        console.log(res);
+      })
+      //第一首歌的id
+      return getUrl ('song/detail',{ids:first_song_id})
+    }).then(res => {
+      //拿到第一首歌的id对应的封面url
+      const mus_cover_url = res.data.songs[0].al.picUrl
+      //默认渲染第一首歌的封面
+      oCover.innerHTML = `
+      <img src = '${mus_cover_url}' class = 'cover_wrap'/>
+      `
+    })
+     
+  </script>
+</body>
+
+</html>

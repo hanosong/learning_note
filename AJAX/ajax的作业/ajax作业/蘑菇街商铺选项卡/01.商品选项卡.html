@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./common.css" />
+  </head>
+
+  <body>
+    <div class="nav">
+      <ul class="flex warp around">
+        <li class="flex around">流行</li>
+        <li class="flex around">新款</li>
+        <li class="flex around">精选</li>
+      </ul>
+    </div>
+    <div id="content" class="flex around"></div>
+    <script src="./axios.js"></script>
+    <script>
+      // 1: 点击按钮,发起请求，获取对应的数据.获取后，给content的div渲染对应的商品.
+      const aLi = document.querySelectorAll(".warp > li");
+      const oContent = document.querySelector("#content");
+      const baseURL = "http://152.136.185.210:8000/api/w6/home/data?";
+
+      //默认渲染第一个页面
+
+      //数据
+      aLi.forEach((item, i) => {
+        item.onclick = function () {
+          aLi.forEach((item) => {
+            item.style.borderBottom = "";
+          });
+          this.style.borderBottom = "1px solid red";
+          oContent.innerHTML = "";
+          if (i === 0) {
+            getGoodsList("type=pop&page=1");
+          } else if (i === 1) {
+            getGoodsList("type=new&page=1");
+          } else {
+            getGoodsList("type=sell&page=1");
+          }
+        };
+      });
+
+      // 把已经载入的那一页存储起来 => !!!有问题
+      // if (oContent.innerHTML) {
+      //   window.onunload = function () {
+      //     //怎么把点击中的li下边框的变色也存起来?
+
+      //     localStorage.setItem("list", JSON.stringify(oContent.innerHTML));
+      //     oContent.innerHTML = JSON.parse(localStorage.getItem("list"));
+      //   };
+      // } else {
+      //   getGoodsList("type=pop&page=1");
+      // }
+
+      //不同分类下的商品类容封装
+      function getGoodsList(url) {
+        axios.get(baseURL + url).then((res) => {
+          //拿到list
+          const {
+            data: {
+              data: { list },
+            },
+          } = res;
+          //拿到需要渲染的子字段
+          list.forEach(({ title, price, cfav, show, props }) => {
+            oContent.innerHTML += `
+              <div class='pic '">
+                <img src="${show.img}" />
+                <div class='ellipsis'>${props}</div>
+                <div class='flex center'>
+                  <span class='price text_padding'>¥ ${price}</span>
+                  <span class='text_padding'>✰${cfav}</span>
+                </div>
+              </div>
+              `;
+          });
+        });
+      }
+    </script>
+  </body>
+</html>

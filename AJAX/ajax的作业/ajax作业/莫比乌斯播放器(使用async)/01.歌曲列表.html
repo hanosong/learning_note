@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="common.css" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='wrap' class="flex">
+    <div class="search_warp">
+      <input type="text">
+      <button>搜索</button>
+      <ul class="song_list">
+      </ul>
+    </div>
+    <div id="cover">
+    </div>
+    <div id="message"></div>
+  </div>
+  <audio src="" controls></audio>
+  
+  </div>
+  <script src="axios.js"></script>
+  <script>
+    //获取搜索和歌曲列表显示板块
+    const oSearchWrap = document.querySelector('.search_warp')
+    const oSearch = oSearchWrap.querySelector('input');
+    const oBtn = oSearchWrap.querySelector('button');
+    const oSongList = oSearchWrap.querySelector('.song_list')
+    //获取封面
+    const oCover = document.querySelector('#cover');
+    //获取评论板块
+    const oMessage = document.querySelector('#message');
+    //获取音乐播放器
+    const oAu = document.querySelector('audio');
+    //设置默认url
+    axios.defaults.baseURL = 'https://autumnfish.cn/';
+    
+    //默认显示的是起风了的播放列表
+    searchSongs('起风了');
+
+    //点击搜索歌曲 
+    oBtn.onclick = function(){
+      //把输入的关键字存起来
+      const target = oSearch.value;
+      searchSongs(target);
+    }
+
+    //点击播放按钮,开始播放歌曲 => 委托给ul
+    oSongList.onclick = async function (e) {
+      if(e.target.innerText === '播放'){
+        //再调用一次getUrl => id就是button的id => 提前将id帮到button的属性上,也可以用自定义属性绑定id
+        let res = await getUrl('song/url',{id:e.target.id})       
+          oAu.src = res.data.data[0].url
+          //调用audio播放的方法
+          oAu.play();
+          //点击播放的这首歌的评论
+          getComment(e.target.id);   
+          //点击播放的这首歌的封面
+          getCover(e.target.id)
+        }
+    }
+
+    //请求接口
+    function getUrl (url, params){
+      return axios.get(url, {params});
+    }
+   
+
+    //获取播放列表后,调用第一首歌的封面和第一首歌的评论
+    async function searchSongs(keywords){
+      let res = await getUrl('search',{keywords})     
+        const list = res.data.result.songs;
+        const first_song_id = list[0].id;
+        //默认获取'起风了'的播放列表list
+        getSongsList(list);
+        //第一首歌的评论
+        getComment(first_song_id); 
+        //第一首歌的封面
+        getCover(first_song_id)   
+    }
+    //插入歌曲list 纯渲染
+     function getSongsList (list){
+      oSongList.innerHTML = ''
+      list.forEach(song => {
+        //渲染音乐列表
+        oSongList.innerHTML += `
+        <li>
+          ${song.name}
+          <button id = '${song.id}'>播放</button>
+          ${song.mvid ? '':'<button> MV </button>'}
+        </li>
+        `
+      })
+  }
+         
+    //获取第一首歌的评论
+      async function getComment(id){
+       //请求第一首歌封面的同时请求评论
+       let res =await getUrl ('comment/hot?type=0',{id})
+        //先清空样式
+        oMessage.innerHTML = '';
+        const mus_comment = res.data.hotComments;
+        //渲染评论列表
+        mus_comment.forEach(comment => {
+          oMessage.innerHTML += `
+          <div class = 'message_icon_wrap'>
+            <div class = 'message_icon'>
+              <img src=${comment.user.avatarUrl} />  
+            </div>
+            <div>
+              <h4>${comment.user.nickname}</h4>
+              <span>${comment.content}</span>
+            </div>
+          <div>
+          `
+        })
+      
+    }
+  
+    //获取第一首歌的封面
+      async function getCover(ids){
+      let res = await getUrl ('song/detail',{ids})     
+      //拿到第一首歌的id对应的封面url
+      const mus_cover_url = res.data.songs[0].al.picUrl
+      //默认渲染第一首歌的封面
+      oCover.innerHTML = `
+      <img src = '${mus_cover_url}' class = 'cover_wrap'/>
+      `  
+    }
+  </script>
+</body>
+
+</html>

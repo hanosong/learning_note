@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="./js/vue.js"></script>
+    <script>
+      const children = {
+        template: `
+        <div>
+        <input v-model="num"/> 
+        {{num}}   
+        </div>
+        `,
+        data: () => ({
+          num: 0,
+        }),
+      };
+      const App = {
+        template: `
+            <div id="app">
+                <children ></children>
+            </div>
+            `,
+        components: { children },
+      };
+      //父组件
+      new Vue({
+        render: (h) => h(App),
+      }).$mount("#app");
+    </script>
+  </body>
+</html>

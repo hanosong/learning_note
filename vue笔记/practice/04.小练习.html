@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <ul>
+        <li>
+          <h3>姓名:幂幂</h3>
+          <p>年龄:32</p>
+          <button>应该去相亲</button>
+        </li>
+      </ul> -->
+      <ul>
+        <li v-for="obj in arr">
+          <h3>姓名:{{obj.name}}</h3>
+          <p>年龄:{{obj.age}}</p>
+          <button v-if="!obj.married">应该去相亲</button>
+        </li>
+      </ul>
+    </div>
+
+    <script src="js/vue.js"></script>
+    <script>
+      // married为true，则显示<button>应该去相亲</button>这个按钮
+
+      new Vue({
+        el: "#app",
+        data: {
+          arr: [
+            {
+              name: "幂幂",
+              age: 32,
+              married: false,
+            },
+            {
+              name: "杨颖",
+              age: 28,
+              married: false,
+            },
+            {
+              name: "杨紫琼",
+              age: 23,
+              married: true,
+            },
+          ],
+        },
+      });
+    </script>
+  </body>
+</html>

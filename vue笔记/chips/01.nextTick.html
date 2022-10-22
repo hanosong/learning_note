@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    ul {
+      width: 500px;
+      height: 250px;
+      border: 1px solid #000;
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.js"></script>
+  <script src="../chips/js/vuex.js"></script>
+  <script>
+    const { mapState, mapMutations } = Vuex;
+    const store = new Vuex.Store({
+      state: {
+        money: 0,
+        msg: [],
+      },
+      mutations: {
+        //如何判断是父亲存的还是儿子存的?? => 传参的时候传一个对象
+        savemoney(state, family) {
+          state.money += family.count;
+          state.msg.push(`${family.name}往金库存入${family.count}元,余额${state.money}元`);
+        },
+      },
+    });
+    //公用
+    const mx = {
+      computed: {
+        ...mapState(["money"]),
+        ...mapState(["msg"]),
+      },
+      methods: {
+        ...mapMutations(["savemoney"]),
+      },
+    };
+    //组件
+    const postCounter = {
+      template: `
+            <div>
+                <h4>{{name}}我们的金库现在还有{{money}}块钱</h4>
+                {{name}}存入的金额:<input v-model="count"/>
+                <button @click='savemoney({count: count*1, name})'>{{name}}往金库存钱</button>
+            </div>
+            `,
+      data: () => ({
+        count: 0,
+      }),
+
+      mixins: [mx],
+      props: ["name"],
+    };
+    const App = {
+      template: `
+          <div id='app'>
+            <h3>父子小金库,不要让妈妈知道哦!</h3>
+            <hr/>
+            <post-counter name="爸爸" />
+            <post-counter name="儿子" />
+            <hr />
+            <h4>父子存钱记录</h4>
+            <ul ref='ul'>
+                <li v-for="d in $store.state.msg">{{d}}</li>
+            </ul>
+          </div>
+          `,
+
+      methods: {},
+      components: { postCounter },
+      //设置触底
+      updated() {
+        const oUl = this.$refs.ul;
+        if (oUl.scrollHeight >= oUl.clientHeight) {
+          oUl.scrollTop = oUl.scrollHeight - oUl.clientHeight;
+        }
+      },
+    };
+    new Vue({
+      render: (h) => h(App),
+      store,
+    }).$mount("#app");
+      // 现在father和son不再是父子组件关系，而是兄弟组件关系。
+      // 要求实现和01.状态管理.html一模一样的效果。
+
+      // 现在多添加了一个存钱记录.如果记录太多,需要有滚动条,并且一直贴底.
+      // 每次存钱,在nextTick中设置滚动条贴底.
+  </script>
+</body>
+
+</html>
