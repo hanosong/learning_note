@@ -15,4 +15,11 @@
 
    使用多个 plugin 时，用逗号隔开
 
-### 每次转换不同的类型，都要安装不同的插件，有没有解决方式？
+### 每次转换不同的类型，都要安装不同的插件，有没有解决方式？ => Babel 的预设 preset
+
+使用方式
+
+1. npm install @babel/preset-env -D
+2. npx babel ./src --out-dir ./build --presets=@babel/preset-env
+   - 会根据要适配的浏览器以及涉及到浏览器的兼容性问题进行转换
+   - 默认会开启严格模式
