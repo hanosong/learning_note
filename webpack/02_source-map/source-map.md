@@ -49,3 +49,23 @@ source-map 生成的文件大小大概是源文件的 2.5 倍
 }
 
 ```
+
+设置中 webpack 的 devtool --- source-map 生成的文件有不同区别 -> 不同的 sourcemap 风格，影响构建速度
+
+devtool 有 26 个值可以设置
+
+- "eval": 通过 eval 函数运行代码，开发环境中使用。用于还原不太准确的代码。不生产 source-map 文件，但是会在 eval 执行的代码中，添加//#sourceULR=。
+- "none": => 生产模式 mode:production 下自动为 none
+- "eval-source-map" : 会生成 sourcemap，但是是以 DataUrl 添加到 eval 函数的后面
+
+26 个值的组合规则
+
+1. inline- | hidden- | eval： 三选一
+2. nosources： 可选
+3. cheap： 可选， 可以跟随 module 的值
+
+开发阶段： source-map（vue） / cheap-module-source-map（react） 获取调试信息，方便快速开发
+
+测试阶段： 同开发阶段，因为也希望在浏览器下看到正确的错误提示
+
+发布阶段： 为了减少静态资源包的大小 => false / 不写
