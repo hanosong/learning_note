@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "file": "bundle.js",
+  "mappings": "AAGAA,QAAQC,IADM,SAIZD,QAAQC,IAAI",
+  "sources": [
+    "webpack://source_map/./src/main.js"
+  ],
+  "sourcesContent": [
+    "// 项目入口\r\n// 逻辑相关代码\r\nlet message = \"hello\";\r\nconsole.log(message);\r\n\r\nconst foo = () => {\r\n  console.log(\"foo function exec~\");\r\n};\r\n\r\nfoo();\r\n"
+  ],
+  "names": [
+    "console",
+    "log"
+  ],
+  "sourceRoot": ""
+}

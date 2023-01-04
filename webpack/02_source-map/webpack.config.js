@@ -7,6 +7,7 @@ const path = require("path");
  */
 module.exports = {
   mode: "production",
+  devtool: "source-map",
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "./build"), // __dirname -> 全局变量，表示当前路径 -- 当前文件夹下的bundle文件夹
