@@ -23,3 +23,15 @@
 2. npx babel ./src --out-dir ./build --presets=@babel/preset-env
    - 会根据要适配的浏览器以及涉及到浏览器的兼容性问题进行转换
    - 默认会开启严格模式
+
+### Babel 的底层原理
+
+本质：编译器
+
+#### 工作流程
+
+1. 解析 parsing
+   词法分析 lexical analysis -> tokens 数组 -> 语法分析 parsing ->
+2. 转换 transformation
+   转成 AST 抽象语法树 -> 通过 plugin -> 转成新的 AST 语法树
+3. 生成 code generation
