@@ -35,3 +35,13 @@
 2. 转换 transformation
    转成 AST 抽象语法树 -> 通过 plugin -> 转成新的 AST 语法树
 3. 生成 code generation
+
+### babel-preset
+
+> webpack 会根据我们的预设来加载对应的插件列表，并将其传递给 babel
+> npm install @babel/preset-env
+> 常见的预设
+
+1. env
+2. react
+3. TypeScript

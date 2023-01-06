@@ -27,7 +27,16 @@ module.exports = {
             /**
              * 真实开发会使用预设
              */
-            presets: ["@babel/preset-env"],
+            presets: [
+              "@babel/preset-env", // 写法1
+              // 写法2：
+              // [
+              //   "@babel/preset-env",
+              //   {
+              //     targets: polyfill, // 给当前的preset-env指定需要设配哪些目标浏览器
+              //   },
+              // ],
+            ],
           },
         },
       },
