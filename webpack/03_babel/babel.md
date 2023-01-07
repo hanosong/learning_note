@@ -73,3 +73,35 @@
 2. 5%： 通过全局使用情况统计信息选择的浏览器版本
 3. dead
 4. last 2 version： 每个浏览器的最后两个版本
+
+#### 命令行使用 browserslist
+
+安装 babel 的时候， 会附带安装 browserslist
+
+```js
+    // 查询默认兼容的浏览器
+    npx browserslist
+
+    // 查询自定义兼容的浏览器版本， 逗号表示或的条件
+    npx browserslist ">1%, last 2 version, not dead"
+
+    // 编写规则， 并使其对特定的工具生效
+    /*
+    方案1： 放在package.json中配置
+        'browserslist': [
+            "last 2 version",
+            "not dead",
+            "> 0.2%"，
+        ]
+    方案2： 单独的一个配置文件 .browserslistrc文件
+        开发中常用2：因为browserslist工具， 可以在多个前端工具之间进行共享浏览器兼容设置（postcss/babel都可以用broserslistrc中的设置）
+    */
+    // 设置package.json => 使打包 npm run build
+
+```
+
+#### 多个条件之间的关系
+
+- 或： or / , / 换行
+- 且： and
+- 非： not --> > .5% and not last 2 version

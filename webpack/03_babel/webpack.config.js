@@ -33,7 +33,7 @@ module.exports = {
               // [
               //   "@babel/preset-env",
               //   {
-              //     targets: polyfill, // 给当前的preset-env指定需要设配哪些目标浏览器
+              //     targets: ">0.5%", // 给当前的preset-env指定需要设配哪些目标浏览器; target的设置会覆盖.borserslistrc文件的设置
               //   },
               // ],
             ],
