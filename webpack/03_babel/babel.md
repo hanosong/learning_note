@@ -45,3 +45,20 @@
 1. env
 2. react
 3. TypeScript
+
+## 浏览器兼容性
+
+> 不管时 chrome 浏览器还是 edge 浏览器，使用的内核都是 Blink -- 浏览器大一统时代要到了
+
+#### 关于兼容性
+
+> 考虑兼容性的问题， 实质就是考虑浏览器市场占有率的问题
+> 查询市场占有率的网站 -- caniuse.com
+
+- css 兼容性： postcss --> 将比较新的 css 特性/浏览器前缀 => 自动转换
+- js 兼容性： babel
+
+### browserslist
+
+> 在不同的前端工具之间，共享目标浏览器和 Node.js 版本的配置
+> 底层用到了 caniuse-lite 工具，数据来自 caniuse 网站
