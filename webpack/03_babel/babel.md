@@ -62,3 +62,14 @@
 
 > 在不同的前端工具之间，共享目标浏览器和 Node.js 版本的配置
 > 底层用到了 caniuse-lite 工具，数据来自 caniuse 网站
+
+- dead： 24 个月内都没有官方更新和维护
+
+#### Browserslist 编写规则
+
+> 仅了解
+
+1. defaults： Browserslist 的默认浏览器（ > 0.5%, last 2 version, Firefox ESR, not dead）
+2. 5%： 通过全局使用情况统计信息选择的浏览器版本
+3. dead
+4. last 2 version： 每个浏览器的最后两个版本
