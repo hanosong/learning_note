@@ -105,3 +105,28 @@
 - 或： or / , / 换行
 - 且： and
 - 非： not --> > .5% and not last 2 version
+
+### Baebl 的配置文件
+
+> 将 babel 的配置信息放到一个独立的文件中
+
+- babel.config.json(或者 js / cjs / mjs) cjs -> common js ;
+  - babel7 使用，可以直接作用于 Monorepos 项目的子包
+- .babelrc.json(或者.babelrc / js / cjs / mjs)
+  - 早期使用较多的配置方式，但是对于配置 Monorepos 项目比较麻烦
+
+> Monorepos -> 一种项目的管理方式：
+> 比如： babel： => 包含 core / preset-env / arrow-function / cli...很多包
+> Monorepos -> 第三方框架项目 就是一个项目有很多子包：
+
+    core ---package.json
+    preset-env   --- package.json
+    ...
+
+## polyfill
+
+> 更好的使用 js
+> 一些特殊的语法
+
+- 特殊的语法：promise -> polyfill 中有自己定义的 function promise
+- 特殊的 API string.includes() -> String.prototype.includes

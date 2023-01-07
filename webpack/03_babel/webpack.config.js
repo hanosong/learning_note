@@ -17,27 +17,32 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
+
         use: {
           loader: "babel-loader", //会自动找到对应的babel工具--记得安装npm install babel babel-loader -D
-          options: {
-            // plugins: [
-            //   "@babel/plugin-transform-arrow-functions",
-            //   "@babel/plugin-transform-block-scoping",
-            // ],
-            /**
-             * 真实开发会使用预设
-             */
-            presets: [
-              "@babel/preset-env", // 写法1
-              // 写法2：
-              // [
-              //   "@babel/preset-env",
-              //   {
-              //     targets: ">0.5%", // 给当前的preset-env指定需要设配哪些目标浏览器; target的设置会覆盖.borserslistrc文件的设置
-              //   },
-              // ],
-            ],
-          },
+
+          // options可以抽取到babel.config.js文件中
+
+          // options: {
+          //   // plugins: [
+          //   //   "@babel/plugin-transform-arrow-functions",
+          //   //   "@babel/plugin-transform-block-scoping",
+          //   // ],
+          //   /**
+          //    * 真实开发会使用预设
+          //    */
+          //   presets: [
+          //     "@babel/preset-env", // 写法1
+          //     // 写法2：
+          //     // [
+          //     //   "@babel/preset-env",
+          //     //   {
+          //     //     targets: ">0.5%", // 给当前的preset-env指定需要设配哪些目标浏览器; target的设置会覆盖.borserslistrc文件的设置
+          //     //   },
+          //     // ],
+          //   ],
+          // },
+          //
         },
       },
     ],
