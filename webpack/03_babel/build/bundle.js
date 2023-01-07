@@ -20,5 +20,9 @@ var obj = {
 var name = obj.name,
   age = obj.age;
 console.log(name, age);
+
+// 4. 字符串的includes方法
+var nikname = "hakwan";
+console.log(nikename.includes("kw"));
 /******/ })()
 ;

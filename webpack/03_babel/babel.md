@@ -130,3 +130,21 @@
 
 - 特殊的语法：promise -> polyfill 中有自己定义的 function promise
 - 特殊的 API string.includes() -> String.prototype.includes
+
+### polyfill 的安装
+
+1. babel 7.4.0 之前
+
+   - npm install @babel/polyfill --save
+
+2. 单独引入 core-js 和 regenerator-runtime
+
+#### useBuiltIns 属性
+
+有三个常见值
+
+1. false -- 不使用 polyfill 来进行适配，并且这个时候无需设置 corejs
+2. 'useage'： 自动检测所需要的 polyfill
+3. 'entry': axois,loadash,这些第三方包如果也需要依赖于 polyfill 时使用。这样做会根据 browserlist 目标导入所有的 polyfill -> 包体积变大（尽量使用 useage）
+   - 还需要在入口的代码中引入 import 'core-js/stable'
+   - import 'regenerator-runtime/runtime'

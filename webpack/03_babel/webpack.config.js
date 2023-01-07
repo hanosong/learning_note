@@ -17,7 +17,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-
+        // exclude:/node_modules/, // babel针对node_modules下面的文件全部不处理
         use: {
           loader: "babel-loader", //会自动找到对应的babel工具--记得安装npm install babel babel-loader -D
 

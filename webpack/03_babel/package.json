@@ -20,6 +20,8 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "@babel/plugin-transform-block-scoping": "^7.20.11"
+    "@babel/plugin-transform-block-scoping": "^7.20.11",
+    "core-js": "^3.27.1",
+    "regenerator-runtime": "^0.13.11"
   }
 }

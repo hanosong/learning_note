@@ -14,3 +14,7 @@ const obj = {
 };
 const { name, age } = obj;
 console.log(name, age);
+
+// 4. 字符串的includes方法
+const nikname = "hakwan";
+console.log(nikname.includes("kw"));
