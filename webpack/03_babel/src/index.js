@@ -1,3 +1,12 @@
+// 当设置useBuiltIns: entry时，需要引入以下两个
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
+
+// 当在react中使用时
+import React from "react";
+import ReactDOM from "react-dom/client"; // 客户端渲染
+import App from "./react/App.jsx";
+
 // 1.ES6中const 定义常量
 const message = "hello";
 
@@ -18,3 +27,7 @@ console.log(name, age);
 // 4. 字符串的includes方法
 const nikname = "hakwan";
 console.log(nikname.includes("kw"));
+
+// 5. 渲染react代码
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<App />); // 将App渲染到哪？ -> 需要一个模板

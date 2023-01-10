@@ -1,6 +1,7 @@
 // 该文件名字最好固定, webpack会自动找到该文件，不然需要单独设置--config=xxx
 const path = require("path");
 
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: "./src/index.js",
@@ -16,7 +17,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/, // 0个或者1个x
         // exclude:/node_modules/, // babel针对node_modules下面的文件全部不处理
         use: {
           loader: "babel-loader", //会自动找到对应的babel工具--记得安装npm install babel babel-loader -D
@@ -47,6 +48,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+    }),
+  ],
 };
 
 // stp1: npx babel src --out-dir dist --presets=@babel/preset-env

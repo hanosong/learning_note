@@ -148,3 +148,13 @@
 3. 'entry': axois,loadash,这些第三方包如果也需要依赖于 polyfill 时使用。这样做会根据 browserlist 目标导入所有的 polyfill -> 包体积变大（尽量使用 useage）
    - 还需要在入口的代码中引入 import 'core-js/stable'
    - import 'regenerator-runtime/runtime'
+
+## React 中的使用
+
+1. npm install react react-dom
+2. npm install html-webpack-plugin -D ---- react 中使用 html 模板挂载根节点
+3. 对 react 的 jsx 语法进行处理需要如下插件
+   - @babel/plugin-syntax-jsx
+   - @babel/plugin-transform-react-jsx
+   - @babel/plugin-transform-react-display-name
+   * 开发中使用 preset -> npm install @babel/preset-react -D
