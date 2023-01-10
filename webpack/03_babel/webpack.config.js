@@ -14,6 +14,9 @@ module.exports = {
      */
     clean: true,
   },
+  resolve: {
+    extensions: [".json", ".js", ".wasm", ".jsx"], //没写后缀名时， 将自动补全这些进行尝试
+  },
   module: {
     rules: [
       {
