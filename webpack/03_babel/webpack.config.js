@@ -15,10 +15,11 @@ module.exports = {
     clean: true,
   },
   resolve: {
-    extensions: [".json", ".js", ".wasm", ".jsx"], //没写后缀名时， 将自动补全这些进行尝试
+    extensions: [".json", ".js", ".wasm", ".jsx", ".ts"], //没写后缀名时， 将自动补全这些进行尝试
   },
   module: {
     rules: [
+      // 针对jsx？代码进行babel处理
       {
         test: /\.jsx?$/, // 0个或者1个x
         // exclude:/node_modules/, // babel针对node_modules下面的文件全部不处理
@@ -47,6 +48,13 @@ module.exports = {
           //   ],
           // },
           //
+        },
+      },
+      // 针对ts
+      {
+        test: /\.ts$/,
+        use: {
+          loader: "ts-loader",
         },
       },
     ],

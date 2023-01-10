@@ -7,6 +7,9 @@ import React from "react";
 import ReactDOM from "react-dom/client"; // 客户端渲染
 import App from "./react/App.jsx";
 
+// ts的编译
+import { sum } from "./ts/math";
+
 // 1.ES6中const 定义常量
 const message = "hello";
 
@@ -31,3 +34,6 @@ console.log(nikname.includes("kw"));
 // 5. 渲染react代码
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 root.render(<App />); // 将App渲染到哪？ -> 需要一个模板
+
+// 6.ts
+console.log(sum(20, 30));

@@ -149,7 +149,7 @@
    - 还需要在入口的代码中引入 import 'core-js/stable'
    - import 'regenerator-runtime/runtime'
 
-## React 中的使用
+## React 中 jsx 的编译
 
 1. npm install react react-dom
 2. npm install html-webpack-plugin -D ---- react 中使用 html 模板挂载根节点
@@ -158,3 +158,12 @@
    - @babel/plugin-transform-react-jsx
    - @babel/plugin-transform-react-display-name
    * 开发中使用 preset -> npm install @babel/preset-react -D
+
+## ts 代码的编译
+
+法 1.
+
+1. 在 webpack 中配置编译 ts 的 loader
+   use:"ts-loader"
+2. 安装 npm install ts-loader -D => 安装 ts-loader 的时候，会自动安装 npm install typescript -D
+3. tsc --init => Ts 的编译配置信息需要编写一个 tsconfig.json 文件

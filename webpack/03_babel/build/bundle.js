@@ -8036,6 +8036,23 @@ var App = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
 });
 /* harmony default export */ __webpack_exports__["default"] = (App);
 
+/***/ }),
+
+/***/ "./src/ts/math.ts":
+/*!************************!*\
+  !*** ./src/ts/math.ts ***!
+  \************************/
+/***/ (function(__unused_webpack_module, exports) {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.sum = void 0;
+function sum(num1, num2) {
+    return num1 + num2;
+}
+exports.sum = sum;
+
+
 /***/ })
 
 /******/ 	});
@@ -8129,6 +8146,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
 /* harmony import */ var _react_App_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./react/App.jsx */ "./src/react/App.jsx");
+/* harmony import */ var _ts_math__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ts/math */ "./src/ts/math.ts");
 // 当设置useBuiltIns: entry时，需要引入以下两个
 // import "core-js/stable";
 // import "regenerator-runtime/runtime";
@@ -8136,6 +8154,9 @@ __webpack_require__.r(__webpack_exports__);
 // 当在react中使用时
 
  // 客户端渲染
+
+
+// ts的编译
 
 
 // 1.ES6中const 定义常量
@@ -8163,6 +8184,9 @@ console.log(nikname.includes("kw"));
 // 5. 渲染react代码
 var root = react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot(document.querySelector("#root"));
 root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_react_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null)); // 将App渲染到哪？ -> 需要一个模板
+
+// 6.ts
+console.log((0,_ts_math__WEBPACK_IMPORTED_MODULE_3__.sum)(20, 30));
 }();
 /******/ })()
 ;
