@@ -9,8 +9,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "./build"), // __dirname -> 全局变量，表示当前路径 -- 当前文件夹下的bundle文件夹
     filename: "bundle.js", // 打包后文件名
+    // globalObject: 'this', //解决webpack4在组件使用window报错问题 --- 京北方项目
     /**
-     * 重新打包时，先将之间打包的文件夹删除掉
+     * 重新打包时，先将之前打包的文件夹删除掉
      */
     clean: true,
   },

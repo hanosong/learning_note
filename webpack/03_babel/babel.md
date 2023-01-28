@@ -161,9 +161,11 @@
 
 ## ts 代码的编译
 
-法 1.
+法 1.使用 ts-loader 处理：需要单独安装 ts-loader
 
 1. 在 webpack 中配置编译 ts 的 loader
    use:"ts-loader"
 2. 安装 npm install ts-loader -D => 安装 ts-loader 的时候，会自动安装 npm install typescript -D
 3. tsc --init => Ts 的编译配置信息需要编写一个 tsconfig.json 文件
+
+法 2：
