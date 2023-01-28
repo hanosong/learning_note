@@ -17,5 +17,6 @@ module.exports = {
     ],
     // jsx代码转换的预设
     ["@babel/preset-react"],
+    ["@babel/preset-typescript"], // ts预设， 在这里配置的好处是可以在第二个元素处配置polyfill
   ],
 };

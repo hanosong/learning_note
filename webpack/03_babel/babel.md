@@ -167,5 +167,19 @@
    use:"ts-loader"
 2. 安装 npm install ts-loader -D => 安装 ts-loader 的时候，会自动安装 npm install typescript -D
 3. tsc --init => Ts 的编译配置信息需要编写一个 tsconfig.json 文件
+   => 只能做到将 ts 转为 js； 优点，会校验 ts 文件里面的参数类型是否正确
 
-法 2：
+法 2：使用 babel-loader
+可以将 ts 转为 js， 同时还可以实现 polyfill 的功能
+但是 babel-loader 在编译的过程中，不会对类型错误进行检测
+
+开发中：转换用 babel，再用 tsc 进行类型校验
+在 script 里面添加两个脚本，用于类型校验
+'type-check': "tsc --noEmit", // 只校验，不要输出东西
+'type-check-watch': 'tsc --noEmit --watch', // 实时监听
+
+两个脚本命令结合起来写 =>
+'type-check-watch': 'npm run tsc-checktsc -- --watch', // 第一个-- 是针对 type-check 的
+
+1. npm run type-check => 对 ts 代码的类型进行检测
+2. npm run type-check-watch => 实时的检测类型错误

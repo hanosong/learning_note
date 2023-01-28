@@ -8042,16 +8042,24 @@ var App = /*#__PURE__*/(0,react__WEBPACK_IMPORTED_MODULE_0__.memo)(function () {
 /*!************************!*\
   !*** ./src/ts/math.ts ***!
   \************************/
-/***/ (function(__unused_webpack_module, exports) {
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.sum = void 0;
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "formatePrice": function() { return /* binding */ formatePrice; },
+/* harmony export */   "sum": function() { return /* binding */ sum; }
+/* harmony export */ });
 function sum(num1, num2) {
-    return num1 + num2;
+  return num1 + num2;
 }
-exports.sum = sum;
-
+function formatePrice(priceString) {
+  if (priceString.includes('$')) {
+    // includes 高级语法，需要用polyfill进行处理，但是此时用的是ts-loader（里面没有包含polyfill的东西）=> 解决：用babel-loader + ts预设处理
+    return 'xxx';
+  } else {
+    return 'yyy';
+  }
+}
 
 /***/ })
 

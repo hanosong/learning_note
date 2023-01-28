@@ -54,9 +54,12 @@ module.exports = {
       // 针对ts
       {
         test: /\.ts$/,
-        use: {
-          loader: "ts-loader",
-        },
+        // 直接用tsloader无法处理高级语法
+        // use: {
+        //   loader: "ts-loader",
+        // },
+        // 解决：使用预设 npm install @babel/preset-typescript -D => 在babel里面配置
+        use: "babel-loader",
       },
     ],
   },
