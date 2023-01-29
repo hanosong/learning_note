@@ -18,6 +18,10 @@ module.exports = {
   resolve: {
     extensions: [".json", ".js", ".wasm", ".jsx", ".ts"], //没写后缀名时， 将自动补全这些进行尝试
   },
+  //针对本地服务器的
+  devServer: {
+    static: ["public"], //将静态资源都放到public文件夹中，打包会一起打进去（可以不写，默认就是public）；可以多个文件夹
+  },
   module: {
     rules: [
       // 针对jsx？代码进行babel处理
