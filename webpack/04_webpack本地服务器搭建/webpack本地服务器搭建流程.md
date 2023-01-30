@@ -58,3 +58,11 @@ compress: true, 响应头里面会有 content-encoding: gzip; 浏览器拿到的
 ## 开发阶段配置代理
 
 配置 proxy
+
+- 将请求先发送到一个代理服务器，代理服务器和 API 服务器没有跨域问题，就可解决跨域了。
+
+### 代理配置的相关配置属性
+
+1. target: 代理到的目标地址
+2. pathRewrite：删除多余的 url
+3. chageOrigin：是否更新代理后请求的 headers 中的 host 地址 => 修改 host 地址，为了通过服务器校验（反扒）

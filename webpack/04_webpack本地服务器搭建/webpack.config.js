@@ -32,6 +32,7 @@ module.exports = {
         pathRewrite: {
           "^/api": "", // 将api开头去掉
         },
+        chageOrigin: true, // 修改host地址，为了通过服务器校验（反扒）
       },
     },
   },
