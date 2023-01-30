@@ -66,3 +66,14 @@ compress: true, 响应头里面会有 content-encoding: gzip; 浏览器拿到的
 1. target: 代理到的目标地址
 2. pathRewrite：删除多余的 url
 3. chageOrigin：是否更新代理后请求的 headers 中的 host 地址 => 修改 host 地址，为了通过服务器校验（反扒）
+
+## historyApiFallback -- 脚手架里一般设置好了
+
+> 为了解决 SPA 页面在路由跳转之后，进行刷新时，返回 404 的错误
+
+- boolean 值
+  默认是 false，
+  ture： 在刷新时，如果返回 404 错误，会自动返回 index.html 的内容
+
+- object 类型的值，可以配置 rewrites 属性
+  可以配置 from 来匹配路径，决定要跳转到那个页面

@@ -23,7 +23,7 @@ module.exports = {
     static: ["public"], //将静态资源都放到public文件夹中，打包会一起打进去（可以不写，默认就是public）；可以多个文件夹
     // hotOnly: true // 这个api现在好像被删除了
     // host: '0.0.0.0', // 可以监听同一个网站下的所有这个地址
-    // prot: 8888, // 启用端口,需要设置1024以上的端口,默认8080
+    port: 3000, // 启用端口,需要设置1024以上的端口,默认8080
     // open: true, // 编译成功后自动打开浏览器
     // compress: true, // 压缩打包出来的文件
     proxy: {
@@ -35,6 +35,7 @@ module.exports = {
         chageOrigin: true, // 修改host地址，为了通过服务器校验（反扒）
       },
     },
+    historyApiFallback: true,
   },
   module: {
     rules: [
