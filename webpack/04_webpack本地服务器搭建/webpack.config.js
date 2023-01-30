@@ -26,6 +26,14 @@ module.exports = {
     // prot: 8888, // 启用端口,需要设置1024以上的端口,默认8080
     // open: true, // 编译成功后自动打开浏览器
     // compress: true, // 压缩打包出来的文件
+    proxy: {
+      "/api": {
+        target: "http://localhost:9000",
+        pathRewrite: {
+          "^/api": "", // 将api开头去掉
+        },
+      },
+    },
   },
   module: {
     rules: [

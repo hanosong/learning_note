@@ -6,7 +6,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client"; // 客户端渲染
 import App from "./react/App.jsx";
-
+import axios from "axios";
 // ts的编译
 import { sum } from "./ts/math";
 
@@ -37,3 +37,8 @@ root.render(<App />); // 将App渲染到哪？ -> 需要一个模板
 
 // 6.ts
 console.log(sum(20, 30));
+
+// 8. 发送网络请求获取数据 npm install axios
+axios.get("api/users/list").then((res) => {
+  console.log(res.data, "res");
+});

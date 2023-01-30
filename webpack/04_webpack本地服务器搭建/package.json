@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@babel/plugin-transform-block-scoping": "^7.20.11",
+    "axios": "^1.2.6",
     "core-js": "^3.27.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
