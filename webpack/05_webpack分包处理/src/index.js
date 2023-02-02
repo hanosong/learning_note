@@ -1,44 +1,9 @@
-// 当设置useBuiltIns: entry时，需要引入以下两个
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
-
-// 当在react中使用时
-import React from "react";
-import ReactDOM from "react-dom/client"; // 客户端渲染
-import App from "./react/App.jsx";
-import axios from "axios";
-// ts的编译
-import { sum } from "./ts/math";
-
-// 1.ES6中const 定义常量
+// index.js 作为入口
 const message = "hello";
+console.log(message);
 
-// 2.ES6中的箭头函数
-const foo = () => {
-  console.log("foo function exec~");
-};
+function foo() {
+  console.log("foo exec ~");
+}
+
 foo();
-
-//3.对象的解构
-const obj = {
-  name: "haha",
-  age: 17,
-};
-const { name, age } = obj;
-console.log(name, age);
-
-// 4. 字符串的includes方法
-const nikname = "hakwan";
-console.log(nikname.includes("kw"));
-
-// 5. 渲染react代码
-const root = ReactDOM.createRoot(document.querySelector("#root"));
-root.render(<App />); // 将App渲染到哪？ -> 需要一个模板
-
-// 6.ts
-console.log(sum(20, 30));
-
-// 8. 发送网络请求获取数据 npm install axios
-axios.get("api/users/list").then((res) => {
-  console.log(res.data, "res");
-});

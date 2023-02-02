@@ -4,11 +4,16 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
-  entry: "./src/index.js",
+  // entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    main: "./src/main.js",
+  },
   devtool: false,
   output: {
     path: path.resolve(__dirname, "./build"), // __dirname -> 全局变量，表示当前路径 -- 当前文件夹下的bundle文件夹
-    filename: "bundle.js", // 打包后文件名
+    // placeholder 占位符,动态获取名称
+    filename: "[name]-bundle.js", // 打包后文件名
     clean: true,
   },
   resolve: {

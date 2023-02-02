@@ -33,3 +33,15 @@
 1. 入口起点： 使用 entry 配置手动分离代码 => 建立多个入口
 2. 防止重复：使用 Empty Dependencies 或者 SpliChunksPlugin 去重和分离代码
 3. 通过模块的内联函数调用来分离代码
+
+##### 1. 多入口起点
+
+> 配置多入口 => 使用场景：一个项目想用 vue，一个用 react
+> 比如配置一个 index.js 和 main.js 的入口
+
+```js
+<script defer src="index-bundle.js"></script>
+<script defer src="main-bundle.js"></script>
+// index.html里面的defer代表什么
+
+```
