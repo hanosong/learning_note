@@ -5,9 +5,22 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "development",
   // entry: "./src/index.js",
+  // entry: {
+  //   index: "./src/index.js",
+  //   main: "./src/main.js",
+  //   shared: ["axios"], // 会作为name
+  // },
   entry: {
-    index: "./src/index.js",
-    main: "./src/main.js",
+    index: {
+      import: "./src/index.js",
+      dependOn: "shared1",
+    },
+    main: {
+      import: "./src/main.js",
+      dependOn: "shared1",
+    },
+    shared1: ["axios"],
+    // shared2: ["dayjs", "redux"],
   },
   devtool: false,
   output: {
