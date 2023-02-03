@@ -25,8 +25,9 @@ document.body.append(btn1);
 document.body.append(btn2);
 
 btn1.onclick = () => {
-  import("./router/about");
+  // 使用魔法注释：
+  import(/* webpackChunkName: "about" */ "./router/about");
 };
 btn2.onclick = () => {
-  import("./router/category");
+  import(/* webpackChunkName: "category" */ "./router/category");
 };

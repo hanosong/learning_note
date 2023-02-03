@@ -10,6 +10,8 @@ module.exports = {
     path: path.resolve(__dirname, "./build"), // __dirname -> 全局变量，表示当前路径 -- 当前文件夹下的bundle文件夹
     // placeholder 占位符,动态获取名称
     filename: "[name]-bundle.js", // 打包后文件名,name默认为main
+    //单独针对分包的文件进行命名
+    chunkFilename: "[name]-chunk.js", // 分出来的一个个小包; name默认为文件路径
     clean: true,
   },
   resolve: {

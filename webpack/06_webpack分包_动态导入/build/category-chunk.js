@@ -1,4 +1,4 @@
-(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["src_router_category_js"],{
+(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["category"],{
 
 /***/ "./src/router/category.js":
 /*!********************************!*\

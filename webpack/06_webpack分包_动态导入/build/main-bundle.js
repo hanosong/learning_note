@@ -89,7 +89,7 @@
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = function(chunkId) {
 /******/ 			// return url for filenames based on template
-/******/ 			return "" + chunkId + "-bundle.js";
+/******/ 			return "" + chunkId + "-chunk.js";
 /******/ 		};
 /******/ 	}();
 /******/ 	
@@ -305,10 +305,11 @@ btn2.textContent = "分类";
 document.body.append(btn1);
 document.body.append(btn2);
 btn1.onclick = function () {
-  __webpack_require__.e(/*! import() */ "src_router_about_js").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js", 23));
+  // 使用魔法注释：
+  __webpack_require__.e(/*! import() | about */ "about").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js", 23));
 };
 btn2.onclick = function () {
-  __webpack_require__.e(/*! import() */ "src_router_category_js").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
+  __webpack_require__.e(/*! import() | category */ "category").then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
 };
 /******/ })()
 ;
