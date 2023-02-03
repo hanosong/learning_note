@@ -1,0 +1,15 @@
+(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["src_router_category_js"],{
+
+/***/ "./src/router/category.js":
+/*!********************************!*\
+  !*** ./src/router/category.js ***!
+  \********************************/
+/***/ (function() {
+
+var h1 = document.createElement("h1");
+h1.textContent = "category-page";
+document.body.append(h1);
+
+/***/ })
+
+}]);
