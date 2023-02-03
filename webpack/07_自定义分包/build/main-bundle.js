@@ -9,19 +9,25 @@
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+/* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./utils/bar */ "./src/utils/bar.js");
+/* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/foo */ "./src/utils/foo.js");
+
+
 
 
 // main.js 作为入口
 var message = "hello, main";
 console.log(message);
-function bar() {
-  console.log("bar exec ~");
-}
-bar();
+
+// function bar() {
+//   console.log("bar exec ~");
+// }
+
+// bar();
 
 // 使用axios
-axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("http://123.207.32.32:8080/home/multidata").then(function (res) {
+axios__WEBPACK_IMPORTED_MODULE_2__["default"].get("http://123.207.32.32:8080/home/multidata").then(function (res) {
   console.log(res);
 });
 var btn1 = document.createElement("button");
@@ -358,7 +364,7 @@ btn2.onclick = function () {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_axios_lib_axios_js"], function() { return __webpack_require__("./src/main.js"); })
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["vendors-node_modules_axios_lib_axios_js","utils-src_utils_bar_js-src_utils_foo_js"], function() { return __webpack_require__("./src/main.js"); })
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

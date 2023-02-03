@@ -37,6 +37,27 @@ module.exports = {
   optimization: {
     splitChunks: {
       chunks: "all", // 默认值是async，只有异步才分包
+      // 当一个包大于指定的大小时，继续进行拆包
+      // maxSize: 20000, // 20kb
+      // 将包拆分成不小于minSize的包
+      // minSize: 10000,
+      minSize: 10, // 默认是20000， 至少20kb才会拆包
+
+      // 自己对需要拆包的内容进行分组
+      cacheGroups: {
+        // key是想要作为的名称
+        vendors: {
+          // 双斜杠表示完全匹配 /node_modules/
+          // windows 上的路劲分隔符 / 和 mac 的相反，=> 所以两个都要匹配
+          // \ 有特殊含义-> 转义; 所以要多加一\
+          test: /[\\/]node_modules[\\/]/,
+          filename: "[name]_vandor.js",
+        },
+        utils: {
+          test: /utils/, // test会自动匹配文件夹
+          filename: "[name]_utils.js",
+        },
+      },
     },
   },
   module: {

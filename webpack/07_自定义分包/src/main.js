@@ -1,14 +1,17 @@
 import axios from "axios";
 
+import { bar } from "./utils/bar";
+import { foo } from "./utils/foo";
+
 // main.js 作为入口
 const message = "hello, main";
 console.log(message);
 
-function bar() {
-  console.log("bar exec ~");
-}
+// function bar() {
+//   console.log("bar exec ~");
+// }
 
-bar();
+// bar();
 
 // 使用axios
 axios.get("http://123.207.32.32:8080/home/multidata").then((res) => {
