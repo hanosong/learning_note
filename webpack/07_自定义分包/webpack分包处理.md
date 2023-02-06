@@ -27,3 +27,20 @@
 
 - 开发过程中，推荐使用 named --> 有利于开发人员区分打包是哪个打包的
 - 生产环境，deterministic --> 有利于浏览器做缓存相关的工作
+
+### optimization.runtimeChunk 配置
+
+> 现在很多脚手架已经不再配置了
+
+- 配置 runtime 相关的代码是否抽取到一个单独的 chunk 中
+  runtime 相关的代码是在运行环境中，对模块进行解析、加载、模块信息相关的代码
+  比如 component、bar 两个通过 import 函数相关的代码加载，就是通过 runtime 代码完成的
+- 抽离出来后，有利于浏览器缓存的策略：
+  比如我们修改了业务代码（main），那么 runtime 和 component、bar 的 chunk 是不需要重新加载的；
+  比如我们修改了 component、bar 的代码，那么 main 中的代码时不需要重新加载的
+
+- 设置的值：
+
+1. true/multiple：针对每一个入口打包一个 runtime 文件
+2. single：打包一个 runtime 文件
+3. 对象： name 属性决定 runtimeChunk 的名称

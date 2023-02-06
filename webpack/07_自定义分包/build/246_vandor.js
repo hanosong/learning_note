@@ -1,4 +1,4 @@
-(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["vendors-node_modules_axios_lib_axios_js"],{
+(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([[246],{
 
 /***/ "./node_modules/form-data/lib/browser.js":
 /*!***********************************************!*\

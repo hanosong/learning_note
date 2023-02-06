@@ -1,5 +1,5 @@
 "use strict";
-(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["utils-src_utils_bar_js-src_utils_foo_js"],{
+(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([[19],{
 
 /***/ "./src/utils/bar.js":
 /*!**************************!*\

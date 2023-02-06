@@ -1,4 +1,4 @@
-(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([["about"],{
+(self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([[443],{
 
 /***/ "./src/router/about.js":
 /*!*****************************!*\

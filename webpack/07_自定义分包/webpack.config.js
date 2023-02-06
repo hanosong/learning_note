@@ -39,8 +39,11 @@ module.exports = {
     // 生成的chunkId的算法
     // development -- named(完整名字); production -- deterministic（当别的包发生变化时，id不会发生变化）
     // webpack4: 使用的值为 natural，按照自然数的方式递增，包前面的数字会受到别的包的影响
-    chunkIds: "named", // 生成的id
-
+    chunkIds: "deterministic", // 生成的id
+    // runtime的代码是否抽取到单独的包中，vue2脚手架中时单独打包出runtime代码的
+    runtimeChunk: {
+      name: "runtime",
+    },
     // 分包插件：SplitChunksPlugin
     splitChunks: {
       chunks: "all", // 默认值是async，只有异步才分包
