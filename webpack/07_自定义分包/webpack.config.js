@@ -2,6 +2,7 @@
 const path = require("path");
 
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   mode: "development",
   entry: "./src/main.js",
@@ -35,6 +36,7 @@ module.exports = {
   },
   // 优化配置, production模式下自动开启
   optimization: {
+    // 分包插件：SplitChunksPlugin
     splitChunks: {
       chunks: "all", // 默认值是async，只有异步才分包
       // 当一个包大于指定的大小时，继续进行拆包
@@ -55,10 +57,18 @@ module.exports = {
         },
         utils: {
           test: /utils/, // test会自动匹配文件夹
-          filename: "[name]_utils.js",
+          filename: "[id]_utils.js",
         },
       },
     },
+    // 代码优化：TerserPlugin，模式为production时自动配置 => 让代码更加简洁
+    minimizer: [
+      // JS代码简化
+      new TerserPlugin({
+        extractComments: false, // 是否提取注释
+      }),
+      // css代码简化
+    ],
   },
   module: {
     rules: [
