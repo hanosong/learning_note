@@ -44,3 +44,27 @@
 1. true/multiple：针对每一个入口打包一个 runtime 文件
 2. single：打包一个 runtime 文件
 3. 对象： name 属性决定 runtimeChunk 的名称
+
+### Prefetch 和 Preload
+
+> 在文件中设置
+> webpack 4.6 新增对预获取和预加载的支持
+> 在申明 import 时，可以使用这些内置指令来告知浏览器
+
+1. prefetch: 预获取，将来某些导航下可能需要的资源
+2. preload：预加载，当前导航下可能需要的资源
+
+```js
+import (
+    "./component"
+).then(({default: component})) => {}
+```
+
+与 prefetch 指令相比，preload 指令有许多不同之处
+
+- preload chunk 会在父 chunk 加载时，以并行方式加载。
+  prefetch chunk 会在父 chunk 加载结束后加载
+- preload chunk 具有中等优先级，并立即下载。
+  prefetch chunk 在浏览器闲置时进行下载
+- preload chunk 会在父 chunk 中立即请求，用于当下时刻。
+  prefetch chunk 用于未来的某个时刻

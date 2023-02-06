@@ -29,8 +29,19 @@ document.body.append(btn2);
 
 btn1.onclick = () => {
   // 使用魔法注释：
-  import(/* webpackChunkName: "about" */ "./router/about");
+  import(
+    /* webpackChunkName: "about" */
+    /* webpackPrefetch: true */
+    "./router/about"
+  ).then((res) => {
+    res.about();
+    res.default();
+  });
 };
 btn2.onclick = () => {
-  import(/* webpackChunkName: "category" */ "./router/category");
+  import(
+    /* webpackChunkName: "category" */
+    /* webpackPrefetch: true */
+    "./router/category"
+  );
 };

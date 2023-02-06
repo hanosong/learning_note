@@ -37,7 +37,10 @@ document.body.append(btn1);
 document.body.append(btn2);
 btn1.onclick = function () {
   // 使用魔法注释：
-  __webpack_require__.e(/*! import() | about */ 443).then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js", 23));
+  __webpack_require__.e(/*! import() | about */ 443).then(__webpack_require__.bind(__webpack_require__, /*! ./router/about */ "./src/router/about.js")).then(function (res) {
+    res.about();
+    res.default();
+  });
 };
 btn2.onclick = function () {
   __webpack_require__.e(/*! import() | category */ 34).then(__webpack_require__.t.bind(__webpack_require__, /*! ./router/category */ "./src/router/category.js", 23));
@@ -47,6 +50,13 @@ btn2.onclick = function () {
 
 },
 /******/ function(__webpack_require__) { // webpackRuntimeModules
+/******/ /* webpack/runtime/startup prefetch */
+/******/ !function() {
+/******/ 	__webpack_require__.O(0, [179], function() {
+/******/ 		__webpack_require__.E(443);
+/******/ 	}, 5);
+/******/ }();
+/******/ 
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
 /******/ __webpack_require__.O(0, [246,19], function() { return __webpack_exec__("./src/main.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
