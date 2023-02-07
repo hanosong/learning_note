@@ -16,6 +16,13 @@ module.exports = {
     clean: true,
     // publicPath: "CDN地址/",
   },
+  // 排除某些资源不需要打包
+  externals: {
+    // key: 需要排除的框架的名称 -- 引入的时候from后面的
+    // value: 打包之后从cdn中找到的全局变量, 并会在JS项目中使用的名称
+    react: "React",
+    axios: "axios",
+  },
   resolve: {
     extensions: [".json", ".js", ".wasm", ".jsx", ".ts"], //没写后缀名时， 将自动补全这些进行尝试
   },
