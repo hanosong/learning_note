@@ -14,6 +14,7 @@ module.exports = {
     //单独针对分包的文件进行命名
     chunkFilename: "[name]-chunk.js", // 分出来的一个个小包; name默认为文件路径
     clean: true,
+    // publicPath: "CDN地址/",
   },
   resolve: {
     extensions: [".json", ".js", ".wasm", ".jsx", ".ts"], //没写后缀名时， 将自动补全这些进行尝试
