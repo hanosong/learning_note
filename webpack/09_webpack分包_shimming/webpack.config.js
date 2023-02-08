@@ -110,6 +110,7 @@ module.exports = {
       // value: 包里面变量的名字
       axios: "axios",
       get: ["axios", "get"],
+      dayjs: "dayjs",
     }),
   ],
 };

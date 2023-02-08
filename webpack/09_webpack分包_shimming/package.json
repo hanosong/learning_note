@@ -31,6 +31,7 @@
     "@babel/plugin-transform-block-scoping": "^7.20.11",
     "axios": "^1.2.6",
     "core-js": "^3.27.1",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "regenerator-runtime": "^0.13.11"
