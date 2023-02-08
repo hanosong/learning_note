@@ -2,6 +2,7 @@ import axios from "axios";
 
 import { bar } from "./utils/bar";
 import { foo } from "./utils/foo";
+import "./css/style.css";
 import "./abc";
 // main.js 作为入口
 const message = "hello, main";

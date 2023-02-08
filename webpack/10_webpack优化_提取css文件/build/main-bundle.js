@@ -1,19 +1,25 @@
-"use strict";
 (self["webpackChunkbabel_core_demo"] = self["webpackChunkbabel_core_demo"] || []).push([[179],{
 
 /***/ "./src/abc.js":
 /*!********************!*\
   !*** ./src/abc.js ***!
   \********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-
-axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://123.207.32.32:9002/lyric?id=1842025914").then(function (res) {
+/* provided dependency */ var axios = __webpack_require__(/*! axios */ "axios");
+/* provided dependency */ var get = __webpack_require__(/*! axios */ "axios")["get"];
+/* provided dependency */ var dayjs = __webpack_require__(/*! dayjs */ "./node_modules/dayjs/dayjs.min.js");
+// import axios from "axios";
+// import dayjs from "dayjs";
+console.log(axios, "axios");
+axios.get("http://123.207.32.32:9002/lyric?id=1842025914").then(function (res) {
   console.log(res, "abc.res");
 });
+get("http://123.207.32.32:9002/lyric?id=1842025914").then(function (res) {
+  console.log(res, "abc222.res");
+});
+var d = dayjs(new Date()).format("YYYY-MM-DD HH:mm:ss");
+console.log(d, "d");
 
 /***/ }),
 
@@ -23,12 +29,16 @@ axios__WEBPACK_IMPORTED_MODULE_0___default().get("http://123.207.32.32:9002/lyri
   \*********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "axios");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _utils_bar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./utils/bar */ "./src/utils/bar.js");
 /* harmony import */ var _utils_foo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/foo */ "./src/utils/foo.js");
-/* harmony import */ var _abc__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./abc */ "./src/abc.js");
+/* harmony import */ var _css_style_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./css/style.css */ "./src/css/style.css");
+/* harmony import */ var _abc__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./abc */ "./src/abc.js");
+/* harmony import */ var _abc__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_abc__WEBPACK_IMPORTED_MODULE_4__);
+
 
 
 
@@ -66,12 +76,26 @@ btn2.onclick = function () {
 
 /***/ }),
 
+/***/ "./src/css/style.css":
+/*!***************************!*\
+  !*** ./src/css/style.css ***!
+  \***************************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "axios":
 /*!************************!*\
   !*** external "axios" ***!
   \************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = axios;
 
 /***/ })
@@ -87,7 +111,7 @@ module.exports = axios;
 /******/ }();
 /******/ 
 /******/ var __webpack_exec__ = function(moduleId) { return __webpack_require__(__webpack_require__.s = moduleId); }
-/******/ __webpack_require__.O(0, [19], function() { return __webpack_exec__("./src/main.js"); });
+/******/ __webpack_require__.O(0, [19,76], function() { return __webpack_exec__("./src/main.js"); });
 /******/ var __webpack_exports__ = __webpack_require__.O();
 /******/ }
 ]);

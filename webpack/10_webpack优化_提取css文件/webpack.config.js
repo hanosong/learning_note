@@ -4,6 +4,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { ProvidePlugin } = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: "development",
   entry: "./src/main.js",
@@ -100,6 +101,14 @@ module.exports = {
         test: /\.ts$/,
         use: "babel-loader",
       },
+      {
+        test: /\.css/,
+        use: [
+          // "style-loader", // 样式生效--将style样式以内联的形式插入html中 -- 开发环境用
+          MiniCssExtractPlugin.loader, // 提取到单独的文件中， 并且用link的方式进行引用 --生产环境用
+          "css-loader", // 必须先用cssloader加载样式
+        ],
+      },
     ],
   },
   plugins: [
@@ -112,6 +121,11 @@ module.exports = {
       get: ["axios", "get"],
       // get: ["axios", "default"], // axios新版本：default才是默认的导出对象
       dayjs: "dayjs",
+    }),
+    // css完成代码提取
+    new MiniCssExtractPlugin({
+      filename: "css/[name]_[hash].css", // 前面加‘/’ 表示文件夹
+      chunkFilename: "css/[name]_chunk.css", // 对于动态导入的css进行分包
     }),
   ],
 };
