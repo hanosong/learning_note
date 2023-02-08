@@ -110,6 +110,7 @@ module.exports = {
       // value: 包里面变量的名字
       axios: "axios",
       get: ["axios", "get"],
+      // get: ["axios", "default"], // axios新版本：default才是默认的导出对象
       dayjs: "dayjs",
     }),
   ],
